@@ -1,0 +1,23 @@
+# Files and directories created by pub.
+.dart_tool/
+.packages
+
+# Conventional directory for build output.
+build/
+pubspec.lock
+
+proto/**/*.proto
+proto/**/*.bazel
+proto/**/*.bzl
+proto/**/*.yaml
+proto/**/*.json
+proto/**/*.go
+proto/**/*.md
+proto/**/*.sh
+proto/google/protobuf/**
+
+!proto/google/api/**/*.proto
+!proto/google/protobuf/**/*.proto
+!proto/google/rpc/**/*.proto
+!proto/google/type/**/*.proto
+!proto/google/events/**
