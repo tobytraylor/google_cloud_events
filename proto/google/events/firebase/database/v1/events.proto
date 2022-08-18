@@ -1,0 +1,78 @@
+// Copyright 2020 Google LLC
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+syntax = "proto3";
+
+package google.events.firebase.database.v1;
+
+import "google/events/cloudevent.proto";
+import "google/events/firebase/database/v1/data.proto";
+
+option csharp_namespace = "Google.Events.Protobuf.Firebase.Database.V1";
+option (google.events.cloud_event_product) = "Firebase Realtime Database";
+option (google.events.cloud_event_extension_attribute) = {
+  name: "instance"
+  description: "The Firebase Realtime Database instance from which the event was triggered."
+  camel_case_name: "instance"
+};
+option (google.events.cloud_event_extension_attribute) = {
+  name: "ref"
+  description: "The Firebase Realtime Database path for which the event was triggered."
+  camel_case_name: "ref"
+};
+option (google.events.cloud_event_extension_attribute) = {
+  name: "firebasedatabasehost"
+  description: "The Firebase Realtime Database domain of the source database."
+  camel_case_name: "firebaseDatabaseHost"
+};
+
+// The CloudEvent raised when a ref is created in the Firebase Realtime
+// Database.
+message ReferenceCreatedEvent {
+  option (google.events.cloud_event_type) =
+      "google.firebase.database.ref.v1.created";
+
+  // The data associated with the event.
+  ReferenceEventData data = 1;
+}
+
+// The CloudEvent raised when a reference is updated in the Firebase Realtime
+// Database.
+message ReferenceUpdatedEvent {
+  option (google.events.cloud_event_type) =
+      "google.firebase.database.ref.v1.updated";
+
+  // The data associated with the event.
+  ReferenceEventData data = 1;
+}
+
+// The CloudEvent raised when a reference is deleted in the Firebase Realtime
+// Database.
+message ReferenceDeletedEvent {
+  option (google.events.cloud_event_type) =
+      "google.firebase.database.ref.v1.deleted";
+
+  // The data associated with the event.
+  ReferenceEventData data = 1;
+}
+
+// The CloudEvent raised when a reference is written (created, updated or
+// deleted) in the Firebase Realtime Database.
+message ReferenceWrittenEvent {
+  option (google.events.cloud_event_type) =
+      "google.firebase.database.ref.v1.written";
+
+  // The data associated with the event.
+  ReferenceEventData data = 1;
+}
